@@ -11,7 +11,7 @@ def handle_client(socket_client, client_address, numero):
 
         chances = 5
 
-        while chances >= 0:  # loop para receber as mensagens
+        while chances > 0:  # loop para receber as mensagens
                 data = socket_client.recv(4096)
                 data = data.decode()  # recebendo a mensagem e decodificando em string
                 
