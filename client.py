@@ -34,12 +34,13 @@ def client(ADDR):
         socket_cliet.sendall(mensage.encode())
         data = socket_cliet.recv(4096)
         print('Mensagem recebida do servidor:', data.decode())
-    sleep(5) # foi só para não apagar tudo sem ver a mensagem.
+        sleep(3) # foi só para não apagar tudo sem ver a mensagem.
+        
     menu()
 
 
 def menu():
-    os.system('cls')
+    os.system('clear')
     print('\tTela inicial do programa')
     print('-'*40)
     print('Selecione uma das opções abaixo:\n')
@@ -55,7 +56,7 @@ def menu():
         else:
             print('Opção invalida!')
 
-    os.system('cls')
+    os.system('clear')
     main()
     
 menu()
