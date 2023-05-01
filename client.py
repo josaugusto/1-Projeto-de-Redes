@@ -1,11 +1,12 @@
 import socket
 import os
 from time import sleep
-import threading
 from ipaddress import ip_address
 
 
 def main():
+
+    # Tratamento de erro com o IP e Porta
     while True:
         try:
             HOST = input('IP do servidor: ') # 127.0.0.1
@@ -13,7 +14,6 @@ def main():
             break
         except ValueError:
             print('Endereço IP inválido.\nTente novamente.')
-
     while True:
         try:
             PORT = int(input('Porta: '))
@@ -21,9 +21,7 @@ def main():
         except ValueError: 
             print('A porta tem que ser um número inteiro.\nTente novamente')
 
-
-    Thread = threading.Thread(target=client, args=((HOST, PORT),))
-    Thread.start()
+    client((HOST, PORT))
 
 
 def client(ADDR):
@@ -32,7 +30,7 @@ def client(ADDR):
         print(f'Conectado ao servidor em {ADDR[0]} {ADDR[1]}')
         chances = 5
         if chances == 5:
-                print('Um número aleatório de 0 a 100 foi escolhido.')
+                print('Um número aleatório de 0 a 100 foi gerado.')
         
         while True:
             mensage = int(input('Digite um número entre 0 e 100: '))
@@ -47,15 +45,10 @@ def client(ADDR):
             
             if data == "Suas chances acabaram." and chances == 0:
                 print("Encerrando a conexão com o servidor...")
-                break
-            
+                break            
             chances = chances-1
-                
         sleep(3)  # foi só para não apagar tudo sem ver a mensagem.
-
     menu()
-
-
 
 
 def menu():
@@ -68,7 +61,7 @@ def menu():
     print('\tTela inicial do programa')
     print('-' * 40)
     print('Selecione uma das opções abaixo:\n')
-    print('\t0 - Logar em um servidor\n\t1 - Sair do programa\n')
+    print('\t0 - Logar no servidor\n\t1 - Sair do programa\n')
     print('-' * 40)
 
     while True:
