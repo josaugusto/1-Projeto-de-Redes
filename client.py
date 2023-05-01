@@ -40,23 +40,28 @@ def client(ADDR):
 
 
 def menu():
-    os.system('clear')
+    if os.name == 'nt':
+        clear_cmd = 'cls'
+    else:
+        clear_cmd = 'clear'
+
+    os.system(clear_cmd)
     print('\tTela inicial do programa')
-    print('-'*40)
+    print('-' * 40)
     print('Selecione uma das opções abaixo:\n')
     print('\t0 - Logar em um servidor\n\t1 - Sair do programa\n')
-    print('-'*40)
+    print('-' * 40)
 
     while True:
         op = input('-> ').strip()
-        if op == '0': 
+        if op == '0':
             break
         elif op == '1':
             return
         else:
             print('Opção invalida!')
 
-    os.system('clear')
+    os.system(clear_cmd)
     main()
     
 menu()
