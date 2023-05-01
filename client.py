@@ -27,16 +27,35 @@ def main():
 
 
 def client(ADDR):
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as socket_cliet:
-        socket_cliet.connect(ADDR)
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as socket_client:
+        socket_client.connect(ADDR)
         print(f'Conectado ao servidor em {ADDR[0]} {ADDR[1]}')
-        mensage = input('Mensage: ')
-        socket_cliet.sendall(mensage.encode())
-        data = socket_cliet.recv(4096)
-        print('Mensagem recebida do servidor:', data.decode())
-        sleep(3) # foi só para não apagar tudo sem ver a mensagem.
+        chances = 5
+        if chances == 5:
+                print('Um número aleatório de 0 a 100 foi escolhido.')
         
+        while True:
+            mensage = int(input('Digite um número entre 0 e 100: '))
+            socket_client.sendall(str(mensage).encode())
+            data = socket_client.recv(4096)
+            data = data.decode()
+            print('Servidor: ', data)
+
+            if data == f"Parabéns! Você acertou o número ({mensage})!":
+                print("Encerrando a conexão com o servidor...")
+                break
+            
+            if data == "Suas chances acabaram." and chances == 0:
+                print("Encerrando a conexão com o servidor...")
+                break
+            
+            chances = chances-1
+                
+        sleep(3)  # foi só para não apagar tudo sem ver a mensagem.
+
     menu()
+
+
 
 
 def menu():
@@ -64,4 +83,4 @@ def menu():
     os.system(clear_cmd)
     main()
     
-menu()
+menu()      
