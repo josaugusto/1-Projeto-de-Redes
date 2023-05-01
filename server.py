@@ -22,7 +22,6 @@ def handle_client(socket_client, client_address, numero):
                         print(f'O cliente em {client_address} enviou um valor inválido: {data}')
                         socket_client.sendall('Você escolheu um número inválido. Selecione outro.')
 
-                
                 mensagem = None
                 
                 if data == numero:
@@ -42,7 +41,7 @@ def handle_client(socket_client, client_address, numero):
                         mensagem = 'Número inválido'
                         print(mensagem)
                 
-                mensagem = mensagem.encode()    # transformando em bytes para enviar
+                mensagem = mensagem.encode()   # transformando em bytes para enviar
                
                 chances = chances - 1
                 if chances > 0:
