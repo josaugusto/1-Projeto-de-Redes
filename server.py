@@ -11,48 +11,44 @@ def handle_client(socket_client, client_address, numero):
 
         chances = 5
 
-        while chances > 0:  # loop para receber as mensagens
+        while chances >= 0:  # loop para receber as mensagens
                 data = socket_client.recv(4096)
                 data = data.decode()  # recebendo a mensagem e decodificando em string
                 
                 if data.isdigit():  # verifica se a string contém apenas dígitos
                         data = int(data)  # converte a string em um número inteiro
                         print(f'O cliente em {client_address} escolheu: {data}')
+
+                        mensagem = None
+                        if data == numero:
+                                mensagem = f'Parabéns! Você acertou o número ({data})!'
+                                mensagem = mensagem.encode()
+                                socket_client.sendall(mensagem)
+                                socket_client.close()
+                                break                        
+                        elif data > numero and data <= 100:
+                                mensagem = 'O numero aleatório é menor!'
+                        elif data < numero and data >= 0:
+                                mensagem = 'O número aleatório é maior!'
+                        else: 
+                                mensagem = 'Número inválido'
+                        print(mensagem)
+                        mensagem = mensagem.encode()   # transformando em bytes para enviar
+               
+                        chances-=1
+                        if chances > 0:
+                                socket_client.sendall(mensagem)
+                        elif chances == 0:
+                                mensagem = 'Suas chances acabaram.'
+                                print(mensagem)
+                                socket_client.sendall(mensagem.encode())
+                                break
+                
                 else:
                         print(f'O cliente em {client_address} enviou um valor inválido: {data}')
-                        socket_client.sendall('Você escolheu um número inválido. Selecione outro.')
+                        socket_client.sendall('Você escolheu um número inválido. Selecione outro.'.encode())
 
-                mensagem = None
-                
-                if data == numero:
-                        mensagem = f'Parabéns! Você acertou o número ({data})!'
-                        print(mensagem)
-                        mensagem = mensagem.encode()
-                        socket_client.sendall(mensagem)
-                        socket_client.close()
-                        break                        
-                elif data > numero and data <= 100:
-                        mensagem = 'O numero aleatório é menor!'
-                        print(mensagem)
-                elif data < numero and data >= 0:
-                        mensagem = 'O número aleatório é maior!'
-                        print(mensagem)
-                else: 
-                        mensagem = 'Número inválido'
-                        print(mensagem)
-                
-                mensagem = mensagem.encode()   # transformando em bytes para enviar
                
-                chances = chances - 1
-                if chances > 0:
-                        socket_client.sendall(mensagem)
-                elif chances == 0:
-                        mensagem = 'Suas chances acabaram.'
-                        print(mensagem)
-                        mensagem = mensagem.encode()
-                        socket_client.sendall(mensagem)
-                        break
-                
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as socket_server:  # criando um socket do tipo TCP
     socket_server.bind((HOST, PORT))  # associa um socket a um endereço e uma porta especifica
