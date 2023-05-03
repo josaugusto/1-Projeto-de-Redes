@@ -8,7 +8,6 @@ PORT = 50000
 
 def handle_client(socket_client, client_address, numero):
         print(f'Conectado em {client_address}')  # cliente conectado
-
         chances = 5
 
         while chances >= 0:  # loop para receber as mensagens
