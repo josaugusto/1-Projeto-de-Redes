@@ -5,7 +5,6 @@ from time import sleep
 
 
 def main():
-
     HOST = get_valid_ip()
     PORT = get_valid_port()
     client((HOST, PORT))
@@ -63,5 +62,4 @@ def menu():
 
     os.system(clear_cmd)
     main()
-    
 menu()      
