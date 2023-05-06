@@ -1,8 +1,6 @@
 # JOGO do Acerte o numero
 
-O jogo segue a seguinte ideia, a máquina sorteia um numero de 0 a 100 de forma aleatória e ao se você terá 5 chances para poder acertar o numero
-o jogo está utilizando sockets do tipo TCP em python para estabelecer a conexão do cliente com o servior, tanto o cliente como o servidor utilizão conexão TCP,
-ao estabelecer conexão o servidor cria uma thread para cada jogador, ou seja, nenhum jogador joga com outro usuário que está conectado.
+O jogo segue a seguinte ideia: a máquina sorteia um número aleatório de 0 a 100 e o jogador tem 5 chances para acertar o número sorteado. O jogo utiliza sockets TCP em Python para estabelecer a conexão entre o cliente e o servidor. Quando a conexão é estabelecida, o servidor cria uma thread para cada jogador, garantindo que cada usuário jogue individualmente, sem interação com outros jogadores conectados.
 
 ## Instalação
 
@@ -10,9 +8,9 @@ Para realizar a instalação será necesário que você tenha o [Python](https:/
 
 Ao final de tudo instalado, você deverá clonar o repositório.
 
-para facilitar, tudo estará nos comandos a seguir.
+Para facilitar, tudo estará nos comandos a seguir.
 
-os comandos  deverão ser realizado no terminal do GIT
+Os comandos deverão ser realizados no terminal do Git:
 
 - $ mkdir JOGO
 
@@ -22,12 +20,10 @@ os comandos  deverão ser realizado no terminal do GIT
 
 - $ cd Projeto-de-Redes
 
-os comandos acima criou uma pasta chamada JOGO entrou nela e clonou o repositório
 
 ## Uso
 
-Para jogar será necessário que você tenha aberto a pasta do jogo no seu editor de cógido, caso tenha o VScode instaldo 
-e no git você parou no ultimo passo da instrução de instalação basta dar o seguinte comando
+Para jogar, é necessário que você tenha aberto a pasta do jogo no seu editor de código. Caso tenha o VScode instalado e tenha concluído o último passo da instrução de instalação, basta executar o seguinte comando.
 
 - $ code .
 
