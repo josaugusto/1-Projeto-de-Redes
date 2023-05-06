@@ -1,4 +1,4 @@
-# JOGO do Acerte o numero
+# Jogo da Adivinhação
 
 O jogo segue a seguinte ideia: a máquina sorteia um número aleatório de 0 a 100 e o jogador tem 5 chances para acertar o número sorteado. O jogo utiliza sockets TCP em Python para estabelecer a conexão entre o cliente e o servidor. Quando a conexão é estabelecida, o servidor cria uma thread para cada jogador, garantindo que cada usuário jogue individualmente, sem interação com outros jogadores conectados.
 
