@@ -47,7 +47,6 @@ def handle_client(socket_client, client_address, numero):
                 else:
                         print(f'O cliente em {client_address} enviou um valor inválido: {data}')
                         socket_client.sendall('Você escolheu um valor inválido. Selecione outro.'.encode())
-
                
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as socket_server:  # criando um socket do tipo TCP
