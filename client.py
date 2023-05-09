@@ -5,8 +5,8 @@ from time import sleep
 
 
 def main():
-    HOST = get_valid_ip()
-    PORT = get_valid_port()
+    HOST = get_valid_ip()   # inserção do IP (localhost = 127.0.0.1)
+    PORT = get_valid_port() # inserção da Porta (server rodando porta 50000)
     client((HOST, PORT))
 
 
@@ -21,17 +21,17 @@ def client(ADDR):
         
         while True:
             mensage = input('Digite um número entre 0 e 100: ')
-            socket_client.sendall(mensage.encode())
-            chances-=1
+            socket_client.sendall(mensage.encode()) # envia ao server o numero escolhido
+            chances-=1  # diminui as vidas do cliente
             data = socket_client.recv(4096)
-            data = data.decode()
+            data = data.decode()    # recebe a resposta do server
             print('Servidor: ', data)
 
             if data == f"Parabéns! Você acertou o número ({mensage})!":
                 print("Encerrando a conexão com o servidor...")
                 break
             
-            if data == 'Suas chances acabaram.' and chances == 0:
+            if data == 'Suas chances acabaram.':
                 print("Encerrando a conexão com o servidor...")
                 break
     sleep(3)  # foi só para não apagar tudo sem ver a mensagem.
