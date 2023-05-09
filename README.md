@@ -14,7 +14,7 @@ Os comandos deverão ser realizados no terminal do Git:
 
 - $ mkdir JOGO
 
-- $ cd JODO
+- $ cd JOGO
 
 - $ git clone https://github.com/josaugusto/Projeto-de-Redes.git
 
