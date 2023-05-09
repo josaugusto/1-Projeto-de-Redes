@@ -51,13 +51,13 @@ def handle_client(socket_client, client_address, numero):
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as socket_server:  # criando um socket do tipo TCP
     socket_server.bind((HOST, PORT))  # associa um socket a um endereço e uma porta especifica
-    socket_server.listen()
+    socket_server.listen()      # começa a "escutar" as conexões
     print('Aguardando conexão de um cliente...')
 
-    while True:  # fica sempre procurando conexões
-        socket_client, client_address = socket_server.accept()
-        numero = random.randint(0, 100)
-        print(f'O número escolhido é: {numero}')
+    while True:  # loop que fica sempre procurando conexões
+        socket_client, client_address = socket_server.accept()  # aceitando a conexão do client
+        numero = random.randint(0, 100)                         # gerando um numero aleatorio
+        print(f'O número escolhido é: {numero}')                
         
         client_thread = threading.Thread(target=handle_client, args=(socket_client, client_address, numero)) # cria uma thread para cada cliente conectado
-        client_thread.start()
+        client_thread.start()   # iniciando a thread do client
