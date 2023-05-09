@@ -20,6 +20,7 @@ def handle_client(socket_client, client_address, numero):
 
                         mensagem = None
                         if data == numero:
+                                print("Cliente acertou o número!")
                                 mensagem = f'Parabéns! Você acertou o número ({data})!'
                                 mensagem = mensagem.encode()
                                 socket_client.sendall(mensagem)
@@ -42,6 +43,7 @@ def handle_client(socket_client, client_address, numero):
                                 mensagem = 'Suas chances acabaram.'
                                 print(mensagem)
                                 socket_client.sendall(mensagem.encode())
+                                print('\nEncerrando conexões com o cliente.')
                                 break
                 
                 else:
@@ -56,6 +58,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as socket_server:  # cria
 
     while True:  # loop que fica sempre procurando conexões
         socket_client, client_address = socket_server.accept()  # aceitando a conexão do client
+        print('\nNovo cliente conectado. Inicializando jogo...')
         numero = random.randint(0, 100)                         # gerando um numero aleatorio
         print(f'O número escolhido é: {numero}')                
         
