@@ -13,6 +13,9 @@ def get_valid_port():
     while True:
         try:
             port = int(input('Porta: '))    # pede a porta para conexão
-            return port                     # retorna a porta caso seja um numero inteiro, do contrário sobe o erro ValueError
+            if 1024 <= port <= 65535:
+                return port
+            else:
+                print('A porta precisa estar entre 1024 e 65535.\nTente novamente.')                   
         except ValueError: 
             print('A porta tem que ser um número inteiro.\nTente novamente.')
