@@ -16,7 +16,7 @@ Os comandos deverão ser realizados no terminal do Git:
 
 - $ cd JOGO
 
-- $ git clone https://github.com/josaugusto/Projeto-de-Redes.git
+- $ git clone https://github.com/josaugusto/1-Projeto-de-Redes.git
 
 - $ cd Projeto-de-Redes
 
