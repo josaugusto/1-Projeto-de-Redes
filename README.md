@@ -18,7 +18,7 @@ Os comandos deverão ser realizados no terminal do Git:
 
 - $ git clone https://github.com/josaugusto/1-Projeto-de-Redes.git
 
-- $ cd Projeto-de-Redes
+- $ cd 1-Projeto-de-Redes
 
 
 ## Uso
